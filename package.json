@@ -14,7 +14,7 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "freshbooks",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^1.0.0",
@@ -31,7 +31,7 @@
     "express": "^4.8.5",
     "glob": "^4.0.5"
   },
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Generate an avatar based on a person's first name, last name, and company name",
   "keywords": [
     "ember-addon"
   ],
