@@ -12,7 +12,8 @@ export default Ember.Component.extend({
   classNames: 'initials-avatar',
   attributeBindings: ['style'],
   style: (function() {
-    return "color:" + (this.get("colorOffset") !== void 0 ? this.get("colors")[this.get("colorOffset") % this.get("colors").length] : "#CCCCCC");
+      var computedColor = (this.get("colorOffset") !== void 0 ? this.get("colors")[this.get("colorOffset") % this.get("colors").length] : "#CCCCCC");
+    return "color: " + computedColor + "; border-color:" + computedColor;
   }).property('color-offset'),
   colors: ["#FFCCCC", "#CCFFCC", "#CCCCFF"]
 });
