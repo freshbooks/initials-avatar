@@ -5,18 +5,22 @@ export default Ember.Component.extend({
   company: '',
   colorIndex: 1,
   maxColorIndex: 1,
-  firstInitial: (function() {
+
+  firstInitial: function() {
     return this.get("firstName")[0] || this.get("company")[0];
-  }).property('firstName', 'lastName'),
-  lastInitial: (function() {
+  }.property('firstName', 'lastName'),
+
+  lastInitial: function() {
     return this.get("lastName")[0] || "";
-  }).property('lastName'),
+  }.property('lastName'),
+
   classNameBindings: [':initials-avatar', 'avatarColor'],
-  avatarColor: (function() {
+
+  avatarColor: function() {
     var index = this.get("colorIndex");
     if (index > this.get("maxColorIndex")) {
       index = index % this.get("maxColorIndex");
     }
     return 'avatar-color-' + index;
-  }).property('maxColors', 'colorIndex')
+  }.property('maxColors', 'colorIndex')
 });

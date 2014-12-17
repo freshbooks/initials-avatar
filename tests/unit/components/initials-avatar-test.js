@@ -37,7 +37,7 @@ test('set the color index', function() {
     equal(component.get("avatarColor"), 'avatar-color-2');
 });
 
-test('ccyle through available colors', function() {
+test('cycle through available colors', function() {
     var component = this.subject({
         maxColorIndex: 2,
         colorIndex: 3
