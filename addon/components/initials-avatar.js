@@ -15,7 +15,7 @@ export default Ember.Component.extend({
   avatarColor: (function() {
     var index = this.get("colorIndex");
     if (index > this.get("maxColorIndex")) {
-        index = index % this.get("maxColorIndex");
+      index = index % this.get("maxColorIndex");
     }
     return 'avatar-color-' + index;
   }).property('maxColors', 'colorIndex')
