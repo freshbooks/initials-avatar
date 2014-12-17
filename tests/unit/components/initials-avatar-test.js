@@ -23,3 +23,24 @@ test('shows company if first and last name not provided', function() {
     equal(component.get("firstInitial"), "U");
     equal(component.get("lastInitial"), "");
 });
+
+test('return the default color-1', function() {
+    var component = this.subject({});
+    equal(component.get("avatarColor"), 'avatar-color-1');
+});
+
+test('set the color index', function() {
+    var component = this.subject({
+        maxColorIndex: 3,
+        colorIndex:2
+    });
+    equal(component.get("avatarColor"), 'avatar-color-2');
+});
+
+test('cycle through available colors', function() {
+    var component = this.subject({
+        maxColorIndex: 2,
+        colorIndex: 3
+    });
+    equal(component.get("avatarColor"), 'avatar-color-1');
+});
