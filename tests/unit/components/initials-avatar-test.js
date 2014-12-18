@@ -44,3 +44,13 @@ test('cycle through available colors', function() {
     });
     equal(component.get("avatarColor"), 'avatarColor-1');
 });
+
+test('handle empty first name, last name and company', function() {
+    var component = this.subject({
+        firstName: "",
+        lastName: "",
+        company: ""
+    });
+    equal(component.get("firstInitial"), "");
+    equal(component.get("lastInitial"), "");
+});
