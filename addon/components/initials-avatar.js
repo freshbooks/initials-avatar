@@ -7,11 +7,14 @@ export default Ember.Component.extend({
   maxColorIndex: 1,
 
   firstInitial: function() {
-    return this.get("firstName")[0] || this.get("company")[0];
+    var first = this.get("firstName").length && this.get("firstName")[0],
+      company = this.get("company").length && this.get("company")[0];
+    return first || company;
   }.property('firstName', 'lastName'),
 
   lastInitial: function() {
-    return this.get("lastName")[0] || "";
+    var last = this.get("lastName").length && this.get("lastName")[0];
+    return last || "";
   }.property('lastName'),
 
   classNameBindings: [':initialsAvatar', 'avatarColor'],
