@@ -9,7 +9,7 @@ export default Ember.Component.extend({
   firstInitial: function() {
     var first = this.get("firstName").length && this.get("firstName")[0],
       company = this.get("company").length && this.get("company")[0];
-    return first || company;
+    return first || company || "";
   }.property('firstName', 'lastName'),
 
   lastInitial: function() {
