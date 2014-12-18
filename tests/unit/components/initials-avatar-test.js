@@ -26,7 +26,7 @@ test('shows company if first and last name not provided', function() {
 
 test('return the default color-1', function() {
     var component = this.subject({});
-    equal(component.get("avatarColor"), 'avatar-color-1');
+    equal(component.get("avatarColor"), 'avatarColor-1');
 });
 
 test('set the color index', function() {
@@ -34,7 +34,7 @@ test('set the color index', function() {
         maxColorIndex: 3,
         colorIndex:2
     });
-    equal(component.get("avatarColor"), 'avatar-color-2');
+    equal(component.get("avatarColor"), 'avatarColor-2');
 });
 
 test('cycle through available colors', function() {
@@ -42,5 +42,5 @@ test('cycle through available colors', function() {
         maxColorIndex: 2,
         colorIndex: 3
     });
-    equal(component.get("avatarColor"), 'avatar-color-1');
+    equal(component.get("avatarColor"), 'avatarColor-1');
 });

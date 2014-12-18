@@ -14,13 +14,13 @@ export default Ember.Component.extend({
     return this.get("lastName")[0] || "";
   }.property('lastName'),
 
-  classNameBindings: [':initials-avatar', 'avatarColor'],
+  classNameBindings: [':initialsAvatar', 'avatarColor'],
 
   avatarColor: function() {
     var index = this.get("colorIndex");
     if (index > this.get("maxColorIndex")) {
       index = index % this.get("maxColorIndex");
     }
-    return 'avatar-color-' + index;
+    return 'avatarColor-' + index;
   }.property('maxColors', 'colorIndex')
 });
