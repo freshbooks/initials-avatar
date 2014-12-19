@@ -35,6 +35,14 @@ test('set the color index', function() {
     equal(component.get("avatarColor"), 'avatarColor-2');
 });
 
+test('minimum color should be 1', function() {
+    var component = this.subject({
+        maxColorIndex: 3,
+        colorIndex: 6
+    });
+    equal(component.get("avatarColor"), 'avatarColor-3');
+});
+
 test('cycle through available colors', function() {
     var component = this.subject({
         maxColorIndex: 2,
