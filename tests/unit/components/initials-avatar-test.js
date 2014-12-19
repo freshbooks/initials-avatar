@@ -10,8 +10,7 @@ test('shows first and last name initials', function() {
         lastName: "Obama",
         company: "United States"
     });
-    equal(component.get("firstInitial"), "B");
-    equal(component.get("lastInitial"), "O");
+    equal(component.get("initials"), "BO");
 });
 
 test('shows company if first and last name not provided', function() {
@@ -20,8 +19,7 @@ test('shows company if first and last name not provided', function() {
         lastName: "",
         company: "United States"
     });
-    equal(component.get("firstInitial"), "U");
-    equal(component.get("lastInitial"), "");
+    equal(component.get("initials"), "U");
 });
 
 test('return the default color-1', function() {
@@ -35,6 +33,14 @@ test('set the color index', function() {
         colorIndex:2
     });
     equal(component.get("avatarColor"), 'avatarColor-2');
+});
+
+test('minimum color should be 1', function() {
+    var component = this.subject({
+        maxColorIndex: 3,
+        colorIndex: 6
+    });
+    equal(component.get("avatarColor"), 'avatarColor-3');
 });
 
 test('cycle through available colors', function() {
@@ -51,6 +57,14 @@ test('handle empty first name, last name and company', function() {
         lastName: "",
         company: ""
     });
-    equal(component.get("firstInitial"), "");
-    equal(component.get("lastInitial"), "");
+    equal(component.get("initials"), "");
+});
+
+test('handle empty first name with company', function() {
+    var component = this.subject({
+        firstName: "",
+        lastName: "Lasty",
+        company: ""
+    });
+    equal(component.get("initials"), "L");
 });
