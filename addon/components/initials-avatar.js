@@ -14,10 +14,7 @@ export default Ember.Component.extend({
   }.property('firstName', 'lastName', 'company'),
 
   initial: function(word) {
-      if (word && word.length) {
-          return word[0];
-      }
-      return "";
+      return Ember.isPresent(word) ? word[0] : "";
   },
 
 
