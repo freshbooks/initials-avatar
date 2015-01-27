@@ -68,3 +68,21 @@ test('handle empty first name with company', function() {
     });
     equal(component.get("initials"), "L");
 });
+
+test('displays image if one is provided with provided initials as alt text', function() {
+    expect(3);
+
+    var imageUrl = "http://example.com/potus.jpg";
+
+    var component = this.subject({
+        firstName: "Barack",
+        lastName: "Obama",
+        image: imageUrl
+    });
+
+    this.append();
+
+    equal(component.$('img').length, 1);
+    equal(component.$('img').attr('src'), imageUrl);
+    equal(component.$('img').attr('alt'), 'BO');
+});

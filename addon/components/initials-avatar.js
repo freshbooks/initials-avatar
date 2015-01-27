@@ -3,8 +3,13 @@ export default Ember.Component.extend({
   firstName: '',
   lastName: '',
   company: '',
+  image: '',
   colorIndex: 1,
   maxColorIndex: 1,
+
+  hasImage: function() {
+    return Ember.isPresent(this.get('image'));
+  }.property('image'),
 
   initials: function() {
       var first = this.initial(this.get('firstName')),
