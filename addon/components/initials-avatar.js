@@ -7,9 +7,7 @@ export default Ember.Component.extend({
   colorIndex: 1,
   maxColorIndex: 1,
 
-  hasImage: function() {
-    return Ember.isPresent(this.get('image'));
-  }.property('image'),
+  hasImage: Ember.computed.notEmpty('image'),
 
   initials: function() {
       var first = this.initial(this.get('firstName')),
