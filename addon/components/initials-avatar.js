@@ -3,8 +3,11 @@ export default Ember.Component.extend({
   firstName: '',
   lastName: '',
   company: '',
+  image: '',
   colorIndex: 1,
   maxColorIndex: 1,
+
+  hasImage: Ember.computed.notEmpty('image'),
 
   initials: function() {
       var first = this.initial(this.get('firstName')),
