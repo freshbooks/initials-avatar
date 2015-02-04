@@ -7,7 +7,21 @@ export default Ember.Component.extend({
   colorIndex: 1,
   maxColorIndex: 1,
 
-  hasImage: Ember.computed.notEmpty('image'),
+  checkImage: function() {
+    var self = this;
+    $.ajax(self.get('image'), {
+      success: function(resp) {
+        self.set('hasImage', true);
+      },
+    });
+  },
+
+  hasImage: function() {
+    if (!Ember.isEmpty(this.get('image'))){
+      this.checkImage();
+    }
+    return false;
+  }.property('image'),
 
   initials: function() {
       var first = this.initial(this.get('firstName')),

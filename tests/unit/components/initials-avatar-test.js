@@ -86,17 +86,38 @@ test('displays initials if no image is given', function() {
 test('displays image if one is provided with provided initials as alt text', function() {
     expect(3);
 
-    var imageUrl = "http://example.com/potus.jpg";
-
-    var component = this.subject({
+    var imageUrl = "/images/example.png",
+      component = this.subject({
         firstName: "Barack",
         lastName: "Obama",
-        image: imageUrl
-    });
+        image: imageUrl,
+      });
 
     this.append();
+    Ember.run(function() {
+      component.set('hasImage', true);
+    });
 
     equal(component.$('img').length, 1);
     equal(component.$('img').attr('src'), imageUrl);
     equal(component.$('img').attr('alt'), 'BO');
+});
+
+test('displays initials if image url does not return 200', function() {
+    expect(2);
+
+    var imageUrl = "/images/bogus.png",
+      component = this.subject({
+        firstName: "Barack",
+        lastName: "Obama",
+        image: imageUrl,
+      });
+
+    this.append();
+    Ember.run(function() {
+      component.set('hasImage', false);
+    });
+
+    equal(component.$('img').length, 0);
+    equal(component.$().text().trim(), 'BO');
 });
