@@ -8,7 +8,7 @@ with a first and last name.
 Initials-avatar is intended to be a "default" avatar when an actual image is not
 present.
 
-If a first and last name are both not present, a single initial for the company
+If neither first or last names are present, a single initial for the company
 will be displayed:
 
 ```hbs
