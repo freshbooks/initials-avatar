@@ -1,1 +1,25 @@
-{{initials-avatar firstName="Kyle" lastName="Lowry" company="My Company" maxColorIndex=10 colorIndex=11}}
+<h3>Intials Only</h3>
+{{initials-avatar
+  firstName="Kyle"
+  lastName="Lowry"
+  company="My Company"
+  maxColorIndex=10
+  colorIndex=11}}
+
+<h3>Initials and Invalid Image</h3>
+{{initials-avatar
+  firstName="Kyle"
+  lastName="Lowry"
+  company="My Company"
+  maxColorIndex=10
+  colorIndex=11
+  image='/images/bogus.jpg'}}
+
+<h3>Initials and Valid Image</h3>
+{{initials-avatar
+  firstName="Kyle"
+  lastName="Lowry"
+  company="My Company"
+  maxColorIndex=10
+  colorIndex=11
+  image='/images/example.png'}}
