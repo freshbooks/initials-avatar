@@ -29,7 +29,8 @@
     "ember-data": "1.0.0-beta.12",
     "ember-export-application-global": "^1.0.0",
     "express": "^4.8.5",
-    "glob": "^4.0.5"
+    "glob": "4.0.5",
+    "rimraf": "2.2.8"
   },
   "description": "Generate an avatar based on a person's first name, last name, and company name",
   "keywords": [
