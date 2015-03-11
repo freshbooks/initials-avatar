@@ -1,5 +1,3 @@
-{{#if hasImage}}
-    <img {{bind-attr src="image" alt="initials"}}/>
-{{else}}
-    {{initials}}
-{{/if}}
+{{#unless hasImage}}
+  {{initials}}
+{{/unless}}
