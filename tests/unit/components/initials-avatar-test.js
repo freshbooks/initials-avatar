@@ -1,8 +1,11 @@
 import Ember from 'ember';
 import {test, moduleForComponent} from 'ember-qunit';
 
-moduleForComponent('initials-avatar', 'Unit test for initials avatar');
-
+moduleForComponent('initials-avatar', 'Unit | Component | initials avatar', {
+  // Specify the other units that are required for this test
+  // needs: ['component:foo', 'helper:bar'],
+  unit: true
+});
 
 test('shows first and last name initials', function(assert) {
   var component = this.subject({
