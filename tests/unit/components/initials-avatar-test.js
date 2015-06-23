@@ -4,73 +4,73 @@ import {test, moduleForComponent} from 'ember-qunit';
 moduleForComponent('initials-avatar', 'Unit test for initials avatar');
 
 
-test('shows first and last name initials', function() {
+test('shows first and last name initials', function(assert) {
   var component = this.subject({
     firstName: "Barack",
     lastName: "Obama",
     company: "United States"
   });
-  equal(component.get("initials"), "BO");
+  assert.equal(component.get("initials"), "BO");
 });
 
-test('shows company if first and last name not provided', function() {
+test('shows company if first and last name not provided', function(assert) {
   var component = this.subject({
     firstName: "",
     lastName: "",
     company: "United States"
   });
-  equal(component.get("initials"), "U");
+  assert.equal(component.get("initials"), "U");
 });
 
-test('return the default color-1', function() {
+test('return the default color-1', function(assert) {
   var component = this.subject({});
-  equal(component.get("avatarColor"), 'avatarColor-1');
+  assert.equal(component.get("avatarColor"), 'avatarColor-1');
 });
 
-test('set the color index', function() {
+test('set the color index', function(assert) {
   var component = this.subject({
     maxColorIndex: 3,
     colorIndex:2
   });
-  equal(component.get("avatarColor"), 'avatarColor-2');
+  assert.equal(component.get("avatarColor"), 'avatarColor-2');
 });
 
-test('minimum color should be 1', function() {
+test('minimum color should be 1', function(assert) {
   var component = this.subject({
     maxColorIndex: 3,
     colorIndex: 6
   });
-  equal(component.get("avatarColor"), 'avatarColor-3');
+  assert.equal(component.get("avatarColor"), 'avatarColor-3');
 });
 
-test('cycle through available colors', function() {
+test('cycle through available colors', function(assert) {
   var component = this.subject({
     maxColorIndex: 2,
     colorIndex: 3
   });
-  equal(component.get("avatarColor"), 'avatarColor-1');
+  assert.equal(component.get("avatarColor"), 'avatarColor-1');
 });
 
-test('handle empty first name, last name and company', function() {
+test('handle empty first name, last name and company', function(assert) {
   var component = this.subject({
     firstName: "",
     lastName: "",
     company: ""
   });
-  equal(component.get("initials"), "");
+  assert.equal(component.get("initials"), "");
 });
 
-test('handle empty first name with company', function() {
+test('handle empty first name with company', function(assert) {
   var component = this.subject({
     firstName: "",
     lastName: "Lasty",
     company: ""
   });
-  equal(component.get("initials"), "L");
+  assert.equal(component.get("initials"), "L");
 });
 
-test('displays initials if no image is given', function() {
-  expect(2);
+test('displays initials if no image is given', function(assert) {
+  assert.expect(2);
 
   var component = this.subject({
     firstName: "Barack",
@@ -79,12 +79,12 @@ test('displays initials if no image is given', function() {
 
   var $component = this.append();
 
-  equal($component.attr('style'), undefined);
-  equal($component.text().trim(), 'BO');
+  assert.equal($component.attr('style'), undefined);
+  assert.equal($component.text().trim(), 'BO');
 });
 
-test('displays image if one is provided', function() {
-  expect(2);
+test('displays image if one is provided', function(assert) {
+  assert.expect(2);
 
   var imageUrl = "http://example.com/potus.jpg";
 
@@ -94,6 +94,6 @@ test('displays image if one is provided', function() {
 
   var $component = this.append();
 
-  equal($component.attr('style'), 'background-image: url(http://example.com/potus.jpg); background-size: cover');
-  equal($component.text().trim(), '');
+  assert.equal($component.attr('style'), 'background-image: url(http://example.com/potus.jpg); background-size: cover');
+  assert.equal($component.text().trim(), '');
 });
