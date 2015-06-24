@@ -1,4 +1,4 @@
-# Initials-avatar
+# Initials-avatar ![Build Status](https://travis-ci.org/freshbooks/initials-avatar.svg)
 
 An Ember CLI Addon that generates an avatar based on the initials of someone
 with a first and last name.
