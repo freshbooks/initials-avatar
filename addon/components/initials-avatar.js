@@ -29,7 +29,8 @@ export default Ember.Component.extend({
    */
   style: Ember.computed('hasImage', function() {
     if (this.get('hasImage')) {
-      return 'background-image: url(' + Ember.Handlebars.Utils.escapeExpression(this.get('image')) + '); background-size: cover';
+      var escapedUrl = Ember.Handlebars.Utils.escapeExpression(this.get('image'));
+      return Ember.String.htmlSafe(`background-image: url(${escapedUrl}); background-size: cover`);
     }
   }),
 
