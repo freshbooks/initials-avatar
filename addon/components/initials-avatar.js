@@ -13,12 +13,12 @@ export default Ember.Component.extend({
 
   hasImage: Ember.computed.notEmpty('image'),
 
-  initials: function() {
+  initials: Ember.computed('firstName', 'lastName', 'company', function() {
     var first = this.initial(this.get('firstName')),
       last = this.initial(this.get('lastName')),
       company = this.initial(this.get('company'));
     return (first + last) || company;
-  }.property('firstName', 'lastName', 'company'),
+  }),
 
   initial: function(word) {
     return Ember.isPresent(word) ? word[0] : "";
@@ -27,15 +27,15 @@ export default Ember.Component.extend({
   /**
    * Display the image using a background-image inline style
    */
-  style: function() {
+  style: Ember.computed('hasImage', function() {
     if (this.get('hasImage')) {
       return 'background-image: url(' + Ember.Handlebars.Utils.escapeExpression(this.get('image')) + '); background-size: cover';
     }
-  }.property('hasImage'),
+  }),
 
-  avatarColor: function() {
+  avatarColor: Ember.computed('maxColors', 'colorIndex', function() {
     var index = this.get('colorIndex');
     index = (index - 1) % this.get('maxColorIndex') + 1;
     return 'avatarColor-' + index;
-  }.property('maxColors', 'colorIndex')
+  })
 });
