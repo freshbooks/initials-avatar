@@ -1,6 +1,7 @@
 import Ember from 'ember';
+const { computed, Handlebars, isPresent, Component } = Ember;
 
-export default Ember.Component.extend({
+export default Component.extend({
   classNameBindings: [':initialsAvatar', 'avatarColor'],
   attributeBindings: ['style'],
 
@@ -13,27 +14,36 @@ export default Ember.Component.extend({
 
   hasImage: Ember.computed.notEmpty('image'),
 
-  initials: Ember.computed('firstName', 'lastName', 'company', function() {
-    var first = this.initial(this.get('firstName')),
-      last = this.initial(this.get('lastName')),
-      company = this.initial(this.get('company'));
+  initials: computed('firstName', 'lastName', 'company', function() {
+    const first = this.initial(this.get('firstName'));
+    const last = this.initial(this.get('lastName'));
+    const company = this.initial(this.get('company'));
+
     return (first + last) || company;
   }),
 
-  initial: function(word) {
-    return Ember.isPresent(word) ? word[0] : "";
+  initial(word) {
+    return isPresent(word) ? word[0] : "";
   },
 
   /**
    * Display the image using a background-image inline style
    */
-  style: Ember.computed('hasImage', function() {
+  style: computed('hasImage', function(){
+    // Ember complains about htmlSafe strings when a bound style method returns
+    // nothing. Returning an empty string turns off the warning but leaves an
+    // empty style attribute on the div.
+    let style = '';
+
     if (this.get('hasImage')) {
-      return 'background-image: url(' + Ember.Handlebars.Utils.escapeExpression(this.get('image')) + '); background-size: cover';
+      var escapedUrl = Handlebars.Utils.escapeExpression(this.get('image'));
+      style = `background-image: url(${escapedUrl}); background-size: cover`;
     }
+
+    return Ember.String.htmlSafe(style);
   }),
 
-  avatarColor: Ember.computed('maxColors', 'colorIndex', function() {
+  avatarColor: computed('maxColors', 'colorIndex', function() {
     var index = this.get('colorIndex');
     index = (index - 1) % this.get('maxColorIndex') + 1;
     return 'avatarColor-' + index;
