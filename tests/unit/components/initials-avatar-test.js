@@ -82,7 +82,7 @@ test('displays initials if no image is given', function(assert) {
 
   var $component = this.append();
 
-  assert.equal($component.attr('style'), undefined);
+  assert.equal($component.attr('style'), '');
   assert.equal($component.text().trim(), 'BO');
 });
 
