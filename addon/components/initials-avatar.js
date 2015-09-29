@@ -14,7 +14,7 @@ export default Ember.Component.extend({
 
   hasImage: Ember.computed.notEmpty('image'),
 
-  initials: Ember.computed('firstName', 'lastName', 'company', function() {
+  initials: Ember.computed('firstName', 'lastName', 'company', 'email', function() {
     var first = this.initial(this.get('firstName')),
       last = this.initial(this.get('lastName')),
       company = this.initial(this.get('company')),
