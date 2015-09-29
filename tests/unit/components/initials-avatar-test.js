@@ -37,6 +37,16 @@ test('shows email if company and first and last name not provided', function(ass
   assert.equal(component.get("initials"), "O");
 });
 
+test('shows company if email is provided but first and last name are not', function(assert) {
+  var component = this.subject({
+    firstName: "",
+    lastName: "",
+    company: "United States",
+    email: "Obama@whitehouse.gov"
+  });
+  assert.equal(component.get("initials"), "U");
+});
+
 test('return the default color-1', function(assert) {
   var component = this.subject({});
   assert.equal(component.get("avatarColor"), 'avatarColor-1');
