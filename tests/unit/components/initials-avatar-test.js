@@ -7,12 +7,18 @@ moduleForComponent('initials-avatar', 'Unit | Component | initials avatar', {
   unit: true
 });
 
+test('initial should always be uppercase', function(assert) {
+  var component = this.subject();
+  assert.equal(component.initial("barack"), "B");
+});
+
+
 test('shows first and last name initials', function(assert) {
   var component = this.subject({
     firstName: "Barack",
     lastName: "Obama",
     company: "United States",
-    email: "Obama@whitehouse.gov"
+    email: "obama@whitehouse.gov"
   });
   assert.equal(component.get("initials"), "BO");
 });
@@ -32,7 +38,7 @@ test('shows email if company and first and last name not provided', function(ass
     firstName: "",
     lastName: "",
     company: "",
-    email: "Obama@whitehouse.gov"
+    email: "obama@whitehouse.gov"
   });
   assert.equal(component.get("initials"), "O");
 });
@@ -42,7 +48,7 @@ test('shows company if email is provided but first and last name are not', funct
     firstName: "",
     lastName: "",
     company: "United States",
-    email: "Obama@whitehouse.gov"
+    email: "obama@whitehouse.gov"
   });
   assert.equal(component.get("initials"), "U");
 });
