@@ -11,16 +11,38 @@ test('shows first and last name initials', function(assert) {
   var component = this.subject({
     firstName: "Barack",
     lastName: "Obama",
-    company: "United States"
+    company: "United States",
+    email: "Obama@whitehouse.gov"
   });
   assert.equal(component.get("initials"), "BO");
 });
 
-test('shows company if first and last name not provided', function(assert) {
+test('shows company if email, first and last name not provided', function(assert) {
   var component = this.subject({
     firstName: "",
     lastName: "",
-    company: "United States"
+    company: "United States",
+    email: ""
+  });
+  assert.equal(component.get("initials"), "U");
+});
+
+test('shows email if company and first and last name not provided', function(assert) {
+  var component = this.subject({
+    firstName: "",
+    lastName: "",
+    company: "",
+    email: "Obama@whitehouse.gov"
+  });
+  assert.equal(component.get("initials"), "O");
+});
+
+test('shows company if email is provided but first and last name are not', function(assert) {
+  var component = this.subject({
+    firstName: "",
+    lastName: "",
+    company: "United States",
+    email: "Obama@whitehouse.gov"
   });
   assert.equal(component.get("initials"), "U");
 });
@@ -54,11 +76,12 @@ test('cycle through available colors', function(assert) {
   assert.equal(component.get("avatarColor"), 'avatarColor-1');
 });
 
-test('handle empty first name, last name and company', function(assert) {
+test('handle empty first name, last name, company, and email', function(assert) {
   var component = this.subject({
     firstName: "",
     lastName: "",
-    company: ""
+    company: "",
+    email: ""
   });
   assert.equal(component.get("initials"), "");
 });

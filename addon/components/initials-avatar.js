@@ -7,17 +7,19 @@ export default Ember.Component.extend({
   firstName: '',
   lastName: '',
   company: '',
+  email: '',
   image: '',
   colorIndex: 1,
   maxColorIndex: 1,
 
   hasImage: Ember.computed.notEmpty('image'),
 
-  initials: Ember.computed('firstName', 'lastName', 'company', function() {
+  initials: Ember.computed('firstName', 'lastName', 'company', 'email', function() {
     var first = this.initial(this.get('firstName')),
       last = this.initial(this.get('lastName')),
-      company = this.initial(this.get('company'));
-    return (first + last) || company;
+      company = this.initial(this.get('company')),
+      email = this.initial(this.get('email'));
+    return (first + last) || company || email;
   }),
 
   initial: function(word) {

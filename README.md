@@ -16,6 +16,7 @@ will be displayed:
   firstName=userGivenName
   lastName=userFamilyName
   company=userCompany
+  email=userEmail
   image=userProfileImageUrl
 }}
 ```
@@ -28,6 +29,7 @@ your different initials avatars:
   firstName=userGivenName
   lastName=userFamilyName
   company=userCompany
+  email=userEmail
   image=userProfileImageUrl
   colorIndex=userid
   maxColorIndex=3 {{!-- you only have 3 color classes defined --}}
