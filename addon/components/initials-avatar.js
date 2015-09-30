@@ -23,7 +23,8 @@ export default Ember.Component.extend({
   }),
 
   initial: function(word) {
-    return Ember.isPresent(word) ? word[0] : "";
+    var initial = Ember.isPresent(word) ? word[0] : "";
+    return initial.toUpperCase();
   },
 
   /**

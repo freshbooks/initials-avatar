@@ -1,6 +1,6 @@
 {
   "name": "initials-avatar",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Generate an avatar based on a person's first name, last name, and company name",
   "directories": {
     "doc": "doc",
