@@ -1,6 +1,7 @@
 import Ember from 'ember';
+const { Component, computed, isPresent, String: { htmlSafe } } = Ember;
 
-export default Ember.Component.extend({
+export default Component.extend({
   classNameBindings: [':initialsAvatar', 'avatarColor'],
   attributeBindings: ['style'],
 
@@ -12,33 +13,33 @@ export default Ember.Component.extend({
   colorIndex: 1,
   maxColorIndex: 1,
 
-  hasImage: Ember.computed.notEmpty('image'),
+  hasImage: computed.notEmpty('image'),
 
-  initials: Ember.computed('firstName', 'lastName', 'company', 'email', function() {
-    var first = this.initial(this.get('firstName')),
-      last = this.initial(this.get('lastName')),
-      company = this.initial(this.get('company')),
-      email = this.initial(this.get('email'));
+  initials: computed('firstName', 'lastName', 'company', 'email', function() {
+    let first = this.initial(this.get('firstName'));
+    let last = this.initial(this.get('lastName'));
+    let company = this.initial(this.get('company'));
+    let email = this.initial(this.get('email'));
     return (first + last) || company || email;
   }),
 
-  initial: function(word) {
-    var initial = Ember.isPresent(word) ? word[0] : "";
+  initial(word) {
+    let initial = isPresent(word) ? word[0] : '';
     return initial.toUpperCase();
   },
 
   /**
    * Display the image using a background-image inline style
    */
-  style: Ember.computed('hasImage', function() {
+  style: computed('hasImage', function() {
     if (this.get('hasImage')) {
-      return 'background-image: url(' + Ember.Handlebars.Utils.escapeExpression(this.get('image')) + '); background-size: cover';
+      return htmlSafe(`background-image: url(${this.get('image')}); background-size: cover`);
     }
   }),
 
-  avatarColor: Ember.computed('maxColors', 'colorIndex', function() {
-    var index = this.get('colorIndex');
+  avatarColor: computed('maxColors', 'colorIndex', function() {
+    let index = this.get('colorIndex');
     index = (index - 1) % this.get('maxColorIndex') + 1;
-    return 'avatarColor-' + index;
+    return `avatarColor-${index}`;
   })
 });
