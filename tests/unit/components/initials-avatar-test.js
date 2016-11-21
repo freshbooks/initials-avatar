@@ -8,53 +8,53 @@ moduleForComponent('initials-avatar', 'Unit | Component | initials avatar', {
 
 test('initial should always be uppercase', function(assert) {
   let component = this.subject();
-  assert.equal(component.initial("barack"), "B");
+  assert.equal(component.initial('barack'), 'B');
 });
 
 
 test('shows first and last name initials', function(assert) {
   let component = this.subject({
-    firstName: "Barack",
-    lastName: "Obama",
-    company: "United States",
-    email: "obama@whitehouse.gov"
+    firstName: 'Barack',
+    lastName: 'Obama',
+    company: 'United States',
+    email: 'obama@whitehouse.gov'
   });
-  assert.equal(component.get("initials"), "BO");
+  assert.equal(component.get('initials'), 'BO');
 });
 
 test('shows company if email, first and last name not provided', function(assert) {
   let component = this.subject({
-    firstName: "",
-    lastName: "",
-    company: "United States",
-    email: ""
+    firstName: '',
+    lastName: '',
+    company: 'United States',
+    email: ''
   });
-  assert.equal(component.get("initials"), "U");
+  assert.equal(component.get('initials'), 'U');
 });
 
 test('shows email if company and first and last name not provided', function(assert) {
   let component = this.subject({
-    firstName: "",
-    lastName: "",
-    company: "",
-    email: "obama@whitehouse.gov"
+    firstName: '',
+    lastName: '',
+    company: '',
+    email: 'obama@whitehouse.gov'
   });
-  assert.equal(component.get("initials"), "O");
+  assert.equal(component.get('initials'), 'O');
 });
 
 test('shows company if email is provided but first and last name are not', function(assert) {
   let component = this.subject({
-    firstName: "",
-    lastName: "",
-    company: "United States",
-    email: "obama@whitehouse.gov"
+    firstName: '',
+    lastName: '',
+    company: 'United States',
+    email: 'obama@whitehouse.gov'
   });
-  assert.equal(component.get("initials"), "U");
+  assert.equal(component.get('initials'), 'U');
 });
 
 test('return the default color-1', function(assert) {
   let component = this.subject({});
-  assert.equal(component.get("avatarColor"), 'avatarColor-1');
+  assert.equal(component.get('avatarColor'), 'avatarColor-1');
 });
 
 test('set the color index', function(assert) {
@@ -62,7 +62,7 @@ test('set the color index', function(assert) {
     maxColorIndex: 3,
     colorIndex:2
   });
-  assert.equal(component.get("avatarColor"), 'avatarColor-2');
+  assert.equal(component.get('avatarColor'), 'avatarColor-2');
 });
 
 test('minimum color should be 1', function(assert) {
@@ -70,7 +70,7 @@ test('minimum color should be 1', function(assert) {
     maxColorIndex: 3,
     colorIndex: 6
   });
-  assert.equal(component.get("avatarColor"), 'avatarColor-3');
+  assert.equal(component.get('avatarColor'), 'avatarColor-3');
 });
 
 test('cycle through available colors', function(assert) {
@@ -78,55 +78,25 @@ test('cycle through available colors', function(assert) {
     maxColorIndex: 2,
     colorIndex: 3
   });
-  assert.equal(component.get("avatarColor"), 'avatarColor-1');
+  assert.equal(component.get('avatarColor'), 'avatarColor-1');
 });
 
 test('handle empty first name, last name, company, and email', function(assert) {
   let component = this.subject({
-    firstName: "",
-    lastName: "",
-    company: "",
-    email: ""
+    firstName: '',
+    lastName: '',
+    company: '',
+    email: ''
   });
-  assert.equal(component.get("initials"), "");
+  assert.equal(component.get('initials'), '');
 });
 
 test('handle empty first name with company', function(assert) {
   let component = this.subject({
-    firstName: "",
-    lastName: "Lasty",
-    company: ""
+    firstName: '',
+    lastName: 'Lasty',
+    company: ''
   });
-  assert.equal(component.get("initials"), "L");
+  assert.equal(component.get('initials'), 'L');
 });
 
-test('displays initials if no image is given', function(assert) {
-  assert.expect(2);
-
-  let component = this.subject({
-    firstName: "Barack",
-    lastName: "Obama",
-  });
-
-  this.append();
-  let $component = component.$();
-
-  assert.equal($component.attr('style'), undefined);
-  assert.equal($component.text().trim(), 'BO');
-});
-
-test('displays image if one is provided', function(assert) {
-  assert.expect(2);
-
-  let imageUrl = "http://example.com/potus.jpg";
-
-  let component = this.subject({
-    image: imageUrl
-  });
-
-  this.append();
-  let $component = component.$();
-
-  assert.equal($component.attr('style'), 'background-image: url(http://example.com/potus.jpg); background-size: cover');
-  assert.equal($component.text().trim(), '');
-});
