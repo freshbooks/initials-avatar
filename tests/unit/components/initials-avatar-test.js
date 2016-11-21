@@ -1,5 +1,4 @@
-import Ember from 'ember';
-import {test, moduleForComponent} from 'ember-qunit';
+import { test, moduleForComponent } from 'ember-qunit';
 
 moduleForComponent('initials-avatar', 'Unit | Component | initials avatar', {
   // Specify the other units that are required for this test
@@ -8,13 +7,13 @@ moduleForComponent('initials-avatar', 'Unit | Component | initials avatar', {
 });
 
 test('initial should always be uppercase', function(assert) {
-  var component = this.subject();
+  let component = this.subject();
   assert.equal(component.initial("barack"), "B");
 });
 
 
 test('shows first and last name initials', function(assert) {
-  var component = this.subject({
+  let component = this.subject({
     firstName: "Barack",
     lastName: "Obama",
     company: "United States",
@@ -24,7 +23,7 @@ test('shows first and last name initials', function(assert) {
 });
 
 test('shows company if email, first and last name not provided', function(assert) {
-  var component = this.subject({
+  let component = this.subject({
     firstName: "",
     lastName: "",
     company: "United States",
@@ -34,7 +33,7 @@ test('shows company if email, first and last name not provided', function(assert
 });
 
 test('shows email if company and first and last name not provided', function(assert) {
-  var component = this.subject({
+  let component = this.subject({
     firstName: "",
     lastName: "",
     company: "",
@@ -44,7 +43,7 @@ test('shows email if company and first and last name not provided', function(ass
 });
 
 test('shows company if email is provided but first and last name are not', function(assert) {
-  var component = this.subject({
+  let component = this.subject({
     firstName: "",
     lastName: "",
     company: "United States",
@@ -54,12 +53,12 @@ test('shows company if email is provided but first and last name are not', funct
 });
 
 test('return the default color-1', function(assert) {
-  var component = this.subject({});
+  let component = this.subject({});
   assert.equal(component.get("avatarColor"), 'avatarColor-1');
 });
 
 test('set the color index', function(assert) {
-  var component = this.subject({
+  let component = this.subject({
     maxColorIndex: 3,
     colorIndex:2
   });
@@ -67,7 +66,7 @@ test('set the color index', function(assert) {
 });
 
 test('minimum color should be 1', function(assert) {
-  var component = this.subject({
+  let component = this.subject({
     maxColorIndex: 3,
     colorIndex: 6
   });
@@ -75,7 +74,7 @@ test('minimum color should be 1', function(assert) {
 });
 
 test('cycle through available colors', function(assert) {
-  var component = this.subject({
+  let component = this.subject({
     maxColorIndex: 2,
     colorIndex: 3
   });
@@ -83,7 +82,7 @@ test('cycle through available colors', function(assert) {
 });
 
 test('handle empty first name, last name, company, and email', function(assert) {
-  var component = this.subject({
+  let component = this.subject({
     firstName: "",
     lastName: "",
     company: "",
@@ -93,7 +92,7 @@ test('handle empty first name, last name, company, and email', function(assert) 
 });
 
 test('handle empty first name with company', function(assert) {
-  var component = this.subject({
+  let component = this.subject({
     firstName: "",
     lastName: "Lasty",
     company: ""
@@ -104,12 +103,13 @@ test('handle empty first name with company', function(assert) {
 test('displays initials if no image is given', function(assert) {
   assert.expect(2);
 
-  var component = this.subject({
+  let component = this.subject({
     firstName: "Barack",
     lastName: "Obama",
   });
 
-  var $component = this.append();
+  this.append();
+  let $component = component.$();
 
   assert.equal($component.attr('style'), undefined);
   assert.equal($component.text().trim(), 'BO');
@@ -118,13 +118,14 @@ test('displays initials if no image is given', function(assert) {
 test('displays image if one is provided', function(assert) {
   assert.expect(2);
 
-  var imageUrl = "http://example.com/potus.jpg";
+  let imageUrl = "http://example.com/potus.jpg";
 
-  var component = this.subject({
+  let component = this.subject({
     image: imageUrl
   });
 
-  var $component = this.append();
+  this.append();
+  let $component = component.$();
 
   assert.equal($component.attr('style'), 'background-image: url(http://example.com/potus.jpg); background-size: cover');
   assert.equal($component.text().trim(), '');
