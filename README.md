@@ -1,4 +1,15 @@
-# Initials-avatar [![Build Status](https://travis-ci.org/freshbooks/initials-avatar.svg?branch=master)](https://travis-ci.org/freshbooks/initials-avatar)
+            ___
+         o$"""""$o   
+       o$"       "$o
+      o$  .   .    $o   . .    . ___ .   .   .    __      . .    . .  ___  .    __
+     o$   |  /_\    $o  | |\ | |  |  |  /_\  |   '--.    /_\ \  / /_\  |  /_\  |__)
+     o$   | /   \   $o  | | \| |  |  | /   \ |__ \__/   /   \ \/ /   \ | /   \ |  \
+      o$           $o        
+       o$         $o
+         '"+$$$+"'
+
+
+[![Build Status](https://travis-ci.org/freshbooks/initials-avatar.svg?branch=master)](https://travis-ci.org/freshbooks/initials-avatar)
 
 An Ember CLI Addon that generates an avatar based on the initials of someone
 with a first and last name.
