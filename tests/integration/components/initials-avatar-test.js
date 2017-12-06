@@ -49,3 +49,20 @@ test('uses color if no image', function(assert) {
   assert.equal(this.$('#initials-avatar').attr('style'), 'background-color: #ffffff;');
   assert.equal(this.$('#initials-avatar').text().trim(), 'BO');
 });
+
+test('image supercedes color', function(assert) {
+  assert.expect(2);
+
+  this.render(hbs`
+    {{initials-avatar
+      id="initials-avatar"
+      color="#ffffff"
+      image="http://example.com/potus.jpg"
+      firstName="Barack"
+      lastName="Obama"
+    }}
+  `);
+
+  assert.equal(this.$('#initials-avatar').attr('style'), 'background-image: url(http://example.com/potus.jpg); background-size: cover');
+  assert.equal(this.$('#initials-avatar').text().trim(), '');
+});
