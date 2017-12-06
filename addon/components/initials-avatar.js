@@ -31,9 +31,11 @@ export default Component.extend({
   /**
    * Display the image using a background-image inline style
    */
-  style: computed('hasImage', function() {
+  style: computed('hasImage', 'color', function() {
     if (this.get('hasImage')) {
       return htmlSafe(`background-image: url(${this.get('image')}); background-size: cover`);
+    } else if (this.get('color')) {
+      return htmlSafe(`background-color: ${this.get('color')};`);
     }
   }),
 
