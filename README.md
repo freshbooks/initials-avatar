@@ -61,6 +61,10 @@ This background-color style will only be applied if `image` is a "falsy" value:
 }}
 ```
 
+## Updating to 1.x
+* Updating from 0.x to 1.x requires that your app supports [RFC 176: JavaScript Module
+  API](https://github.com/emberjs/rfcs/pull/176)
+
 ## Installation
 
 * `git clone <repository-url>` this repository
