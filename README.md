@@ -63,9 +63,9 @@ This background-color style will only be applied if `image` is a "falsy" value:
 
 ## Installation
 
-* `git clone` this repository
+* `git clone <repository-url>` this repository
+* `cd initials-avatar`
 * `npm install`
-* `bower install`
 
 ## Running
 
@@ -74,6 +74,7 @@ This background-color style will only be applied if `image` is a "falsy" value:
 
 ## Running Tests
 
+* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
 * `ember test`
 * `ember test --server`
 
@@ -81,4 +82,4 @@ This background-color style will only be applied if `image` is a "falsy" value:
 
 * `ember build`
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).

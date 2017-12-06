@@ -1,5 +1,8 @@
-import Ember from 'ember';
-const { Component, computed, isPresent, String: { htmlSafe } } = Ember;
+import { notEmpty } from '@ember/object/computed';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
+import { isPresent } from '@ember/utils';
+import { htmlSafe } from '@ember/string';
 
 export default Component.extend({
   classNameBindings: [':initialsAvatar', 'avatarColor'],
@@ -13,7 +16,7 @@ export default Component.extend({
   colorIndex: 1,
   maxColorIndex: 1,
 
-  hasImage: computed.notEmpty('image'),
+  hasImage: notEmpty('image'),
 
   initials: computed('firstName', 'lastName', 'company', 'email', function() {
     let first = this.initial(this.get('firstName'));
