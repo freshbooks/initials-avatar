@@ -42,7 +42,7 @@ export default Component.extend({
     }
   }),
 
-  avatarColor: computed('maxColors', 'colorIndex', function() {
+  avatarColor: computed('maxColorIndex', 'colorIndex', function() {
     let index = this.get('colorIndex');
     index = (index - 1) % this.get('maxColorIndex') + 1;
     return `avatarColor-${index}`;
