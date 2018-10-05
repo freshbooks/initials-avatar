@@ -1,68 +1,70 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('initials-avatar', 'Integration | Component | initials avatar', {
-  integration: true
-});
+module('Integration | Component | initials avatar', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('displays initials if no image is given', function(assert) {
-  assert.expect(2);
+  test('displays initials if no image is given', async function(assert) {
+    assert.expect(2);
 
-  this.render(hbs`
-    {{initials-avatar
-      id="initials-avatar"
-      firstName="Barack"
-      lastName="Obama"
-    }}
-  `);
+    await render(hbs`
+      {{initials-avatar
+        id="initials-avatar"
+        firstName="Barack"
+        lastName="Obama"
+      }}
+    `);
 
-  assert.equal(this.$('#initials-avatar').attr('style'), undefined);
-  assert.equal(this.$('#initials-avatar').text().trim(), 'BO');
-});
+    assert.equal(find('#initials-avatar').getAttribute('style'), undefined);
+    assert.equal(find('#initials-avatar').textContent.trim(), 'BO');
+  });
 
-test('displays image if one is provided', function(assert) {
-  assert.expect(2);
+  test('displays image if one is provided', async function(assert) {
+    assert.expect(2);
 
-  this.render(hbs`
-    {{initials-avatar
-      id="initials-avatar"
-      image="http://example.com/potus.jpg"
-    }}
-  `);
+    await render(hbs`
+      {{initials-avatar
+        id="initials-avatar"
+        image="http://example.com/potus.jpg"
+      }}
+    `);
 
-  assert.equal(this.$('#initials-avatar').attr('style'), 'background-image: url(http://example.com/potus.jpg); background-size: cover');
-  assert.equal(this.$('#initials-avatar').text().trim(), '');
-});
+    assert.equal(find('#initials-avatar').getAttribute('style'), 'background-image: url(http://example.com/potus.jpg); background-size: cover');
+    assert.equal(find('#initials-avatar').textContent.trim(), '');
+  });
 
-test('uses color if no image', function(assert) {
-  assert.expect(2);
+  test('uses color if no image', async function(assert) {
+    assert.expect(2);
 
-  this.render(hbs`
-    {{initials-avatar
-      id="initials-avatar"
-      color="#ffffff"
-      firstName="Barack"
-      lastName="Obama"
-    }}
-  `);
+    await render(hbs`
+      {{initials-avatar
+        id="initials-avatar"
+        color="#ffffff"
+        firstName="Barack"
+        lastName="Obama"
+      }}
+    `);
 
-  assert.equal(this.$('#initials-avatar').attr('style'), 'background-color: #ffffff;');
-  assert.equal(this.$('#initials-avatar').text().trim(), 'BO');
-});
+    assert.equal(find('#initials-avatar').getAttribute('style'), 'background-color: #ffffff;');
+    assert.equal(find('#initials-avatar').textContent.trim(), 'BO');
+  });
 
-test('image supercedes color', function(assert) {
-  assert.expect(2);
+  test('image supercedes color', async function(assert) {
+    assert.expect(2);
 
-  this.render(hbs`
-    {{initials-avatar
-      id="initials-avatar"
-      color="#ffffff"
-      image="http://example.com/potus.jpg"
-      firstName="Barack"
-      lastName="Obama"
-    }}
-  `);
+    await render(hbs`
+      {{initials-avatar
+        id="initials-avatar"
+        color="#ffffff"
+        image="http://example.com/potus.jpg"
+        firstName="Barack"
+        lastName="Obama"
+      }}
+    `);
 
-  assert.equal(this.$('#initials-avatar').attr('style'), 'background-image: url(http://example.com/potus.jpg); background-size: cover');
-  assert.equal(this.$('#initials-avatar').text().trim(), '');
+    assert.equal(find('#initials-avatar').getAttribute('style'), 'background-image: url(http://example.com/potus.jpg); background-size: cover');
+    assert.equal(find('#initials-avatar').textContent.trim(), '');
+  });
 });
