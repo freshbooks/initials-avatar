@@ -14,6 +14,12 @@
 An Ember CLI Addon that generates an avatar based on the initials of someone
 with a first and last name.
 
+## Installation
+
+```
+ember install initials-avatar
+```
+
 ## Usage
 
 Initials-avatar is intended to be a "default" avatar when an actual image is not
@@ -65,6 +71,9 @@ This background-color style will only be applied if `image` is a "falsy" value:
 * Updating from 0.x to 1.x requires that your app supports [RFC 176: JavaScript Module
   API](https://github.com/emberjs/rfcs/pull/176)
 
+Contributing
+------------------------------------------------------------------------------
+
 ## Installation
 
 * `git clone <repository-url>` this repository
@@ -78,12 +87,17 @@ This background-color style will only be applied if `image` is a "falsy" value:
 
 ## Running Tests
 
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+* `ember test` – Runs the test suite on the current Ember version
+* `ember test --server` – Runs the test suite in "watch mode"
+* `ember try:each` – Runs the test suite against multiple Ember versions
 
 ## Building
 
 * `ember build`
 
 For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+
+License
+------------------------------------------------------------------------------
+
+This project is licensed under the [MIT License](LICENSE.md).
