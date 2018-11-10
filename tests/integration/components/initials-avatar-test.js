@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | initials avatar', function(hooks) {
@@ -17,8 +17,8 @@ module('Integration | Component | initials avatar', function(hooks) {
       }}
     `);
 
-    assert.equal(find('#initials-avatar').getAttribute('style'), undefined);
-    assert.equal(find('#initials-avatar').textContent.trim(), 'BO');
+    assert.dom('#initials-avatar').doesNotHaveAttribute('style');
+    assert.dom('#initials-avatar').hasText('BO');
   });
 
   test('displays image if one is provided', async function(assert) {
@@ -31,8 +31,11 @@ module('Integration | Component | initials avatar', function(hooks) {
       }}
     `);
 
-    assert.equal(find('#initials-avatar').getAttribute('style'), 'background-image: url(http://example.com/potus.jpg); background-size: cover');
-    assert.equal(find('#initials-avatar').textContent.trim(), '');
+    assert.dom('#initials-avatar').hasAttribute(
+      'style',
+      'background-image: url(http://example.com/potus.jpg); background-size: cover'
+    );
+    assert.dom('#initials-avatar').hasText('');
   });
 
   test('uses color if no image', async function(assert) {
@@ -47,8 +50,8 @@ module('Integration | Component | initials avatar', function(hooks) {
       }}
     `);
 
-    assert.equal(find('#initials-avatar').getAttribute('style'), 'background-color: #ffffff;');
-    assert.equal(find('#initials-avatar').textContent.trim(), 'BO');
+    assert.dom('#initials-avatar').hasAttribute('style', 'background-color: #ffffff;');
+    assert.dom('#initials-avatar').hasText('BO');
   });
 
   test('image supercedes color', async function(assert) {
@@ -64,7 +67,10 @@ module('Integration | Component | initials avatar', function(hooks) {
       }}
     `);
 
-    assert.equal(find('#initials-avatar').getAttribute('style'), 'background-image: url(http://example.com/potus.jpg); background-size: cover');
-    assert.equal(find('#initials-avatar').textContent.trim(), '');
+    assert.dom('#initials-avatar').hasAttribute(
+      'style',
+      'background-image: url(http://example.com/potus.jpg); background-size: cover'
+    );
+    assert.dom('#initials-avatar').hasText('');
   });
 });
