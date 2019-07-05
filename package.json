@@ -1,6 +1,6 @@
 {
   "name": "initials-avatar",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Generate an avatar based on a person's first name, last name, company name, and email",
   "keywords": [
     "ember-addon"
