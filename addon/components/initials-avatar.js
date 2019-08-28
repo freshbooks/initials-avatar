@@ -40,7 +40,7 @@ export default Component.extend({
     } else if (this.get('color')) {
       return htmlSafe(`background-color: ${this.get('color')};`);
     }
-    return '';
+    return null;
   }),
 
   avatarColor: computed('maxColorIndex', 'colorIndex', function() {
