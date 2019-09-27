@@ -36,7 +36,7 @@ export default Component.extend({
    */
   style: computed('hasImage', 'color', function() {
     if (this.get('hasImage')) {
-      return htmlSafe(`background-image: url(${this.get('image')}); background-size: cover`);
+      return htmlSafe(`background-image: url("${encodeURI(this.get('image'))}"); background-size: cover`);
     } else if (this.get('color')) {
       return htmlSafe(`background-color: ${this.get('color')};`);
     }
