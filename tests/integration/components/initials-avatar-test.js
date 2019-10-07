@@ -33,7 +33,7 @@ module('Integration | Component | initials avatar', function(hooks) {
 
     assert.dom('#initials-avatar').hasAttribute(
       'style',
-      'background-image: url(http://example.com/potus.jpg); background-size: cover'
+      'background-image: url("http://example.com/potus.jpg"); background-size: cover'
     );
     assert.dom('#initials-avatar').hasText('');
   });
@@ -69,7 +69,24 @@ module('Integration | Component | initials avatar', function(hooks) {
 
     assert.dom('#initials-avatar').hasAttribute(
       'style',
-      'background-image: url(http://example.com/potus.jpg); background-size: cover'
+      'background-image: url("http://example.com/potus.jpg"); background-size: cover'
+    );
+    assert.dom('#initials-avatar').hasText('');
+  });
+
+  test('uses encoded image urls', async function(assert) {
+    assert.expect(2);
+
+    await render(hbs`
+      {{initials-avatar
+        id="initials-avatar"
+        image="http://example.com/potus.jpg?param=\\"asdssadad\\""
+      }}
+    `);
+
+    assert.dom('#initials-avatar').hasAttribute(
+      'style',
+      'background-image: url("http://example.com/potus.jpg?param=%22asdssadad%22"); background-size: cover'
     );
     assert.dom('#initials-avatar').hasText('');
   });
