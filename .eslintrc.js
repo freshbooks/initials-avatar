@@ -15,6 +15,7 @@ module.exports = {
     browser: true
   },
   rules: {
+    'ember/no-get': ['off']
   },
   overrides: [
     // node files
