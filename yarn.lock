@@ -4167,9 +4167,9 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
 eslint-plugin-ember@^8.3.0:
-  version "8.6.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-ember/-/eslint-plugin-ember-8.6.0.tgz#9099a222325aa57fd0c9782e0a7ea12b1b6552c9"
-  integrity sha512-qd/JmdRe180WR7Yc62+Wl9dSGA90vQsuZ92xIP8nL4a16752rUCpKxVeNi0p2tAieB06yFZBWd8C2JZsBC08/g==
+  version "8.8.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-ember/-/eslint-plugin-ember-8.8.0.tgz#d3572944b1744c801d7099379cdfeaab6905a33b"
+  integrity sha512-E1qYkA+mPGVagRaCoGWonXWl6qox4VL8oHN+dCUrMyANFLNANfD0Zbt/D3aOAY2wtbwKSZtoiiNIxfoMGQzPRw==
   dependencies:
     "@ember-data/rfc395-data" "^0.0.4"
     ember-rfc176-data "^0.3.13"
